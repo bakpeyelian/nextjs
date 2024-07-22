@@ -38,6 +38,7 @@ import { ref } from 'vue';
 var statusLoader = ref(true);
 const store = usePostsIt();
 store.getAllPostIt();
+statusLoader.value = false;
 /* onMounted(async() => {
   await store.getAllPostIt();
   statusLoader.value = false;
