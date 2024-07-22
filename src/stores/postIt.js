@@ -12,7 +12,7 @@ export const usePostsIt = defineStore('postsItStore', {
         //var resultat ;
 
         async getAllPostIt() {
-            const apiUrl = "http://62.72.5.95:1999/notes"
+            const apiUrl = "https://post-it.epi-bluelock.bj/notes/"
             await fetch(apiUrl, {method:"GET"})
                 .then((response) => response.json())
                 .then((response) => { this.postsIt = response.notes })
