@@ -12,20 +12,20 @@ export const usePostsIt = defineStore('postsItStore', {
         //var resultat ;
 
         async getAllPostIt() {
-            const apiUrl = "http://62.72.5.95:1999/notes"
+            const apiUrl = "https://post-it.epi-bluelock.bj/notes/"
             await fetch(apiUrl)
                 .then((response) => response.json())
                 .then((response) => { (this.postsIt = response.notes) })
 
         },
         removePostIt(id) {
-            fetch('http://62.72.5.95:1999/notes/' + id, { method: 'DELETE' })
+            fetch('https://post-it.epi-bluelock.bj/notes/' + id, { method: 'DELETE' })
                 .then(() => this.status = 'Delete successful')
                 .then(()=>this.getAllPostIt())
             alert("Post delete");
         },
         getOnePostIt(id) {
-            fetch('http://62.72.5.95:1999/notes/' + id, { method: 'GET' })
+            fetch('https://post-it.epi-bluelock.bj/notes/' + id, { method: 'GET' })
                 .then((response) => response.json())
                 .then((response) => this.postIt = response)
                 .then((response)=>{
@@ -42,7 +42,7 @@ export const usePostsIt = defineStore('postsItStore', {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: title, content: [content] })
           };
-          fetch("http://62.72.5.95:1999/notes", requestOptions)
+          fetch("https://post-it.epi-bluelock.bj/notes/", requestOptions)
             .then(response => response.json())
             .then(data => (this.postId = data.id))
             .then(()=>{this.getAllPostIt()});
@@ -54,7 +54,7 @@ export const usePostsIt = defineStore('postsItStore', {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ title:this.postIt.title, content:[this.postIt.content[0]] })
             };
-            fetch("http://62.72.5.95:1999/notes/" + id, requestOptions)
+            fetch("https://post-it.epi-bluelock.bj/notes/" + id, requestOptions)
               .then(response => response.json())
               .then(data => (this.updatedAt = data.updatedAt))
               .then(()=>{this.getAllPostIt()})
