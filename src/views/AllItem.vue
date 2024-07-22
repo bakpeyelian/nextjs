@@ -37,12 +37,10 @@ import LoaderComponent from '@/components/LoaderComponent.vue';
 import { ref } from 'vue';
 var statusLoader = ref(true);
 const store = usePostsIt();
-store.getAllPostIt();
-statusLoader.value = false;
-/* onMounted(async() => {
+onMounted(async() => {
   await store.getAllPostIt();
   statusLoader.value = false;
-}) */
+})
 </script>
 <style scoped>
 #logoSite {
