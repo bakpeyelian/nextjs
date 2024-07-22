@@ -15,7 +15,7 @@ export const usePostsIt = defineStore('postsItStore', {
             const apiUrl = "https://post-it.epi-bluelock.bj/notes"
             await fetch(apiUrl, {method:"GET"})
                 .then((response) => response.json())
-                .then((response) => { (this.postsIt = response) })
+                .then((response) => { (this.postsIt = response["notes"]) })
 
         },
         removePostIt(id) {
